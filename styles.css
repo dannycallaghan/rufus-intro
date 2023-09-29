@@ -1,0 +1,83 @@
+:root {
+  --green: #00ff0b;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+  
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+  
+body {
+  font-size: 1.6rem;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+body.drums {
+  background: url('./assets/background.jpg') center center;
+  background-size: cover;
+}
+
+body > div {
+  display: flex;
+  flex: 1;
+  min-height: 100vh;
+  display: flex;
+  flex: 1;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column ;
+}
+  
+img {
+  max-width: 100%;
+  height: auto;
+  color: white;
+}
+
+.buttons {
+  background-color: rgba(107, 49, 87, .75 );
+}
+
+.buttons > div {
+  display: flex;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.buttons > div > div {
+  border: .4rem solid black;
+  border-radius: .5rem;
+  margin: 1rem;
+  padding: 1rem .5rem;
+  width: 10rem;
+  background-color: rgba(161, 89, 136, 1);
+  transition: all .4s ease;
+  cursor: pointer;
+}
+
+.buttons span {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: .1rem;
+  color: var(--green)
+}
+
+.buttons > div > div > span:last-child {
+  display: block;
+  font-size: 4rem;
+  color: #fff;
+}
+
+.active {
+  transform: scale(1.1);
+  border-color: var(--green);
+  box-shadow: 0 0 1rem var(--green);
+}

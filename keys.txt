@@ -1,0 +1,67 @@
+Y - clap - 89
+U - hi-hat - 85
+I - kick - 73
+O - open-hat - 79
+P - boom - 80
+
+H - ride - 72
+J - snare - 74
+K - tom - 75
+L - tink - 76
+
+
+<div data-drum="">
+  <span></span>
+  <span></span>
+</div>
+
+<audio data-drum="89" src="./assets/clap.wav"></audio>
+<audio data-drum="85" src="./assets/hihat.wav"></audio>
+<audio data-drum="73" src="./assets/kick.wav"></audio>
+<audio data-drum="79" src="./assets/openhat.wav"></audio>
+<audio data-drum="80" src="./assets/boom.wav"></audio>
+<audio data-drum="72" src="./assets/ride.wav"></audio>
+<audio data-drum="74" src="./assets/snare.wav"></audio>
+<audio data-drum="75" src="./assets/tom.wav"></audio>
+<audio data-drum="76" src="./assets/tink.wav"></audio>
+
+<div>
+  <div data-drum="89">
+    <span>clap</span>
+    <span>Y</span>
+  </div>
+  <div data-drum="85">
+    <span>hi-hat</span>
+    <span>U</span>
+  </div>
+  <div data-drum="73">
+    <span>kick</span>
+    <span>I</span>
+  </div>
+  <div data-drum="79">
+    <span>open-hat</span>
+    <span>O</span>
+  </div>
+  <div data-drum="80">
+    <span>boom</span>
+    <span>P</span>
+  </div>
+</div>
+<div>
+  <div data-drum="72">
+    <span>ride</span>
+    <span>H</span>
+  </div>
+  <div data-drum="74">
+    <span>snare</span>
+    <span>J</span>
+  </div>
+  <div data-drum="75">
+    <span>tom</span>
+    <span>K</span>
+  </div>
+  <div data-drum="76">
+    <span>tink</span>
+    <span>L</span>
+  </div>
+</div>
