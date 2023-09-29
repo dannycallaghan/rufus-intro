@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css" />
+  <title>Drum Machine</title>
+</head>
+<body>
+
+  <div class="buttons">
+    <div>
+      <div data-drum="89">
+        <span>clap</span>
+        <span>Y</span>
+      </div>
+      <div data-drum="85">
+        <span>hi-hat</span>
+        <span>U</span>
+      </div>
+      <div data-drum="73">
+        <span>kick</span>
+        <span>I</span>
+      </div>
+      <div data-drum="79">
+        <span>open-hat</span>
+        <span>O</span>
+      </div>
+      <div data-drum="80">
+        <span>boom</span>
+        <span>P</span>
+      </div>
+    </div>
+    <div>
+      <div data-drum="72">
+        <span>ride</span>
+        <span>H</span>
+      </div>
+      <div data-drum="74">
+        <span>snare</span>
+        <span>J</span>
+      </div>
+      <div data-drum="75">
+        <span>tom</span>
+        <span>K</span>
+      </div>
+      <div data-drum="76">
+        <span>tink</span>
+        <span>L</span>
+      </div>
+    </div>
+  </div>
+
+  <audio data-drum="89" src="./assets/clap.wav"></audio>
+  <audio data-drum="85" src="./assets/hihat.wav"></audio>
+  <audio data-drum="73" src="./assets/kick.wav"></audio>
+  <audio data-drum="79" src="./assets/openhat.wav"></audio>
+  <audio data-drum="80" src="./assets/boom.wav"></audio>
+  <audio data-drum="72" src="./assets/ride.wav"></audio>
+  <audio data-drum="74" src="./assets/snare.wav"></audio>
+  <audio data-drum="75" src="./assets/tom.wav"></audio>
+  <audio data-drum="76" src="./assets/tink.wav"></audio>
+
+  <script>
+    // Step 1: Get all the buttons, talk about nodelists and arrays
+    // const buttonsNodeList = document.querySelectorAll('.buttons > div > div');
+    // const buttons = Array.from(buttonsNodeList);
+
+    // Step 2: Event based language, add event for click
+    // function clicked(e) {
+    //   console.log(e);
+    //   console.log(e.currentTarget);
+    //   console.log(e.type);
+    // }
+
+    // buttons.forEach((button) => {
+    //   button.addEventListener('click', clicked);
+    // });
+
+    // Step 3: Hook in playing a sound
+    // Talk about data attributes
+    // function clicked(e) {
+    //   const button = e.currentTarget;
+    //   drum = button.dataset.drum;
+    //   playSound(drum);
+    // }
+
+    // Talk about data attributes
+    // Talk about querySelector
+    // Talk about how a non existant DOM element won't cause
+    // an error when we try and get a reference to it,
+    // but it will when we act upon it
+    // Talk about return statements
+    // function playSound(drum) {
+    //   const audio = document.querySelector(`audio[data-drum="${drum}"]`);
+    //   if (!audio) return;
+    //   audio.currentTime = 0;
+    //   audio.play();
+    // }
+
+    // Step 4:
+    // Add event listener for keydown
+    // talk about key codes, and look at list on web
+    // function clicked(e) {
+    //   const button = e.currentTarget;
+    //   drum = button.dataset.drum;
+    //   playSound(drum);
+    // }
+
+    // function playSound(drum) {
+    //   const audio = document.querySelector(`audio[data-drum="${drum}"]`);
+    //   if (!audio) return;
+    //   audio.currentTime = 0;
+    //   audio.play();
+    // }
+
+    // function keydown(e) {
+    //   console.log(e.keyCode);
+    // }
+
+    // buttons.forEach((button) => {
+    //   button.addEventListener('click', clicked);
+    // });
+
+    // window.addEventListener('keydown', keydown);
+
+    // Step 5:
+    // Refactor to use a single function for both click and keydown
+    // Say how at the end of it, regardliess of event, we want the drum ref
+    // so we're gonna call it getDrumReference
+    // function getDrumReference(e) {
+    //   let drum;
+
+    //   if (e.type === 'keydown') {
+    //     drum = e.keyCode;
+    //   }
+
+    //   if (e.type === 'click') {
+    //     const button = e.currentTarget;
+    //     drum = button.dataset.drum;
+    //   }
+
+    //   playSound(drum);
+    //   highlightButton(drum);
+    // }
+
+    // Step 6
+    // Add highlight class
+
+    // Step 7
+    // transitionend
+
+
+    const buttonsNodeList = document.querySelectorAll('.buttons > div > div');
+    const buttons = Array.from(buttonsNodeList);
+
+    function getDrumReference(e) {
+      let drum;
+
+      if (e.type === 'keydown') {
+        drum = e.keyCode;
+      }
+
+      if (e.type === 'click') {
+        const button = e.currentTarget;
+        drum = button.dataset.drum;
+      }
+
+      playSound(drum);
+      highlightButton(drum);
+    }
+
+    function highlightButton(drum) {
+      const button = document.querySelector(`div[data-drum="${drum}"]`);
+      if (!button) return;
+      button.classList.add('active');
+    }
+
+    function playSound(drum) {
+      const audio = document.querySelector(`audio[data-drum="${drum}"]`);
+      if (!audio) return;
+      audio.currentTime = 0;
+      audio.play();
+    }
+
+    function removeButtonHighlight(e) {
+      if (e.propertyName !== 'transform') return;
+      e.target.classList.remove('active');
+    }
+
+    buttons.forEach((button) => {
+      button.addEventListener('click', getDrumReference);
+      button.addEventListener('transitionend', removeButtonHighlight);
+    });
+
+    window.addEventListener('keydown', getDrumReference);
+
+  </script>
+
+</body>
+</html>
